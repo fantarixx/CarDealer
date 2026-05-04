@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: car-dealership
+  profiles:
+    active: docker
+
+  jackson:
+    serialization:
+      fail-on-empty-beans:
+        false
+
+  springdoc:
+    api-docs:
+      path: /api-docs
+    swagger-ui:
+      path: /swagger-ui.html
+      try-it-out-enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    datasource:
+      url: jdbc:postgresql://localhost:5432/car-dealership-postgres
+      username: postgres
+      password: postgres
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:9090/realms/car-dealership-app
+    jpa:
+      hibernate:
+        ddl-auto: validate
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true

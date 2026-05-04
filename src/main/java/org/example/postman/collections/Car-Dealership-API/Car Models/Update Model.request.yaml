@@ -1,0 +1,23 @@
+$kind: http-request
+method: PUT
+url: '{{baseUrl}}/api/models/{{modelId}}'
+order: 5000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": "{{modelId}}",
+      "name": "Camry",
+      "brand": "Toyota",
+      "basePrice": 2100000,
+      "engineType": "PETROL",
+      "year": 2024,
+      "bodyType": "SEDAN",
+      "driveType": "FWD",
+      "transmission": "AUTOMATIC",
+      "seatsCount": 5,
+      "standardComponents": {}
+    }

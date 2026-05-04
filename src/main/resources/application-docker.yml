@@ -1,0 +1,46 @@
+  spring:
+    datasource:
+      url: jdbc:postgresql://postgres:5432/car-dealership-db
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: validate
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+
+    liquibase:
+      enabled: true
+      change-log: classpath:db/changelog/db.changelog-master.xml
+
+    security:
+      oauth2:
+        client:
+          registration:
+            keycloak:
+              client-id: car-dealership-app
+              client-secret: car-app-secret-key
+              authorization-grant-type: authorization_code
+              scope: openid, profile, email
+              redirect-uri: "http://localhost:8080/login/oauth2/code/keycloak"
+          provider:
+            keycloak:
+              issuer-uri: http://keycloak:9090/realms/car-dealership
+        resourceserver:
+          jwt:
+            issuer-uri: http://keycloak:8080/realms/car-dealership
+
+  server:
+    port: 8080
+
+  logging:
+    level:
+      org.springframework.security: DEBUG
+      org.springframework.web: DEBUG
+      org.hibernate.SQL: DEBUG
+      liquibase: INFO
