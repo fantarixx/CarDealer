@@ -1,0 +1,95 @@
+{
+  "realm": "car-dealership",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      {
+        "name": "USER",
+        "description": "Regular user"
+      },
+      {
+        "name": "MANAGER",
+        "description": "Sales manager"
+      },
+      {
+        "name": "WAREHOUSE_ADMIN",
+        "description": "Warehouse administrator"
+      },
+      {
+        "name": "ADMIN",
+        "description": "System administrator"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "john_user",
+      "enabled": true,
+      "email": "john@example.com",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["USER"]
+    },
+    {
+      "username": "anna_manager",
+      "enabled": true,
+      "email": "anna@example.com",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["USER", "MANAGER"]
+    },
+    {
+      "username": "bob_warehouse",
+      "enabled": true,
+      "email": "bob@example.com",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["WAREHOUSE_ADMIN"]
+    },
+    {
+      "username": "admin_sys",
+      "enabled": true,
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ADMIN", "USER", "MANAGER"]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "car-dealership-app",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "car-app-secret-key",
+      "redirectUris": ["*"],
+      "protocol": "openid-connect",
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true
+    }
+  ]
+}

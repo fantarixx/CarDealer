@@ -1,0 +1,22 @@
+$kind: collection
+name: Car Dealership API
+description: Reference collection for the Car Dealership API, organized by resource.
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8080'
+  - key: carId
+    value: ''
+  - key: modelId
+    value: ''
+  - key: componentId
+    value: ''
+  - key: orderId
+    value: ''
+  - key: clientId
+    value: ''
+  - key: testDriveId
+    value: ''
+  - key: modelName
+    value: Camry
+  - key: componentType
+    value: ENGINE
